@@ -1,4 +1,5 @@
 import os
+from imaplib import Commands
 
 import pygame
 
@@ -47,7 +48,24 @@ def play_session(file_path):
     Returns:
         Nothing, plays the songs and waits for inputs
     """
-    ...
+    pygame.mixer.music.load(file_path)
+    pygame.mixer.music.play()
+    song_name = os.path.basename(file_path)
+    print(f"Playing: {song_name}!")
+    while True:
+        command = input("P for Pause, R for Resume, S for Stop!").upper().strip()
+        if command == "P":
+            pygame.mixer.music.pause()
+            print("Paused!")
+        elif command == "R":
+            pygame.mixer.music.unpause()
+            print("Resumed!")
+        elif command == "S":
+            pygame.mixer.music.stop()
+            print("Stopped!")
+            return
+        else:
+            print("Please enter correct command!")
 
 
 if __name__ == "__main__":
