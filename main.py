@@ -14,7 +14,7 @@ def main():
         return
     while True:
         display_menu(songs_list)
-        choice = input("Enter a song to play or Type 'Q' to exit.")
+        choice = input("Enter a song to play or Type 'Q' to exit: ")
         if choice.upper() == "Q":
             break
         elif choice.isdigit():
@@ -67,7 +67,7 @@ def play_session(file_path):
     song_name = os.path.basename(file_path)
     print(f"Playing: {song_name}!")
     while True:
-        command = input("P for Pause, R for Resume, S for Stop!").upper().strip()
+        command = input("P for Pause, R for Resume, S for Stop: ").upper().strip()
         if command == "P":
             pygame.mixer.music.pause()
             print("Paused!")
