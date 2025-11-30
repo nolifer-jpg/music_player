@@ -67,13 +67,32 @@ def play_session(file_path):
     song_name = os.path.basename(file_path)
     print(f"Playing: {song_name}!")
     while True:
-        command = input("P for Pause, R for Resume, S for Stop: ").upper().strip()
+        command = (
+            input("P for Pause, R for Resume, V for volume, S for Stop: ")
+            .upper()
+            .strip()
+        )
         if command == "P":
             pygame.mixer.music.pause()
             print("Paused!")
         elif command == "R":
             pygame.mixer.music.unpause()
             print("Resumed!")
+        elif command == "V":
+            while True:
+                try:
+                    vol_input = float(input("Enter volume (0.0 - 1.0): "))
+                    volume = float(vol_input)
+
+                    if 0.0 <= volume <= 1.0:
+                        pygame.mixer.music.set_volume(volume)
+                        print(f"Volume set to {volume}")
+                        break
+                    else:
+                        print("Volume must be between 0.0 to 1.0")
+                except ValueError:
+                    print("Invalid input. Please enter a number (e.g., 0.5)")
+
         elif command == "S":
             pygame.mixer.music.stop()
             print("Stopped!")
