@@ -1,5 +1,4 @@
 import os
-from imaplib import Commands
 
 import pygame
 
@@ -8,8 +7,23 @@ def main():
     """
     The main function which runs the program
     """
-
-    ...
+    pygame.mixer.init()
+    folder_path = "music"
+    songs_list = load_mp3_files(folder_path)
+    if songs_list is None:
+        return
+    while True:
+        display_menu(songs_list)
+        choice = input("Enter a song to play or Type 'Q' to exit.")
+        if choice.upper() == "Q":
+            break
+        elif choice.isdigit():
+            choice = int(choice) - 1
+            if choice < 0 and choice >= len(songs_list) - 1:
+                print("Enter correct number!")
+                continue
+            full_path = os.path.join(folder_path, songs_list[choice])
+            play_session(full_path)
 
 
 def load_mp3_files(folder_path):
