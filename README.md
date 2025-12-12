@@ -54,7 +54,7 @@ MusicPlayer/
 1.  **Clone the repository**
 
     ```bash
-    git clone [https://github.com/yourusername/music-player.git](https://github.com/yourusername/music-player.git)
+    git clone [https://github.com/nolifer-jpg/music-player.git](https://github.com/nolifer-jpg/music-player.git)
     cd music-player
     ```
 
